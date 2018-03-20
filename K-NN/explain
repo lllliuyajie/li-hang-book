@@ -1,0 +1,6 @@
+numpy: numpy.linalg.norm() 计算标准欧式距离   numpy,tile(inx,(data_size，1)) 将inx，在行方向重复data_size次，列方向上重复1次
+       numpy 中的arry 是向量，做平方是（x1，x2）^2 = x1 * x1,x2*x2
+list:  list[(dist,lable)] 相当于list 中加入元组，取值方法:list[0][0] 表明取列表中第一个元组的第一个元素，依次类推  或者 list[dist] /list[lable]
+若没有循环则会找到最后一组元组的值，采用循环与最字典一致：for dist，lable in list
+
+列表解析： class_count [0 for i in range(10)]     class_count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  列表解析语法最底层使用C语言完成
