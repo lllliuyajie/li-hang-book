@@ -31,7 +31,7 @@ def train(test_set, train_set, train_lable):
             train_vec = train_set[i]
 
             dist = np.linalg.norm(train_vec - test_vec)
-            knn_list.append((dist, lable))  # 列表存入字典
+            knn_list.append((dist, lable))  # 列表存入字典  [(dist, lable), (dist, lable)]
 
         # 剩下的元素
         for i in range(10, len(train_lable)):
@@ -60,7 +60,7 @@ def train(test_set, train_set, train_lable):
     # class_count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     for dis, lable in knn_list:
-        class_count[lable] +=1
+        class_count[lable] += 1
     # 找出最大选票
     mmax = max(class_count)
 
@@ -85,13 +85,16 @@ if __name__ == '__main__':
 
     img = features[0:, 1:]
     lables = features[:, 0]
+    imgs = np.shape(img)
+    print(imgs, "\n")
 
     train_set, test_set, train_lable, test_lable = train_test_split(img, lables, test_size=0.33, random_state=23323)
 
     time2 = time.time()
     print("读取数据完毕,用时：%s\n" % str(time2 - time1))
     print("knn开始工作\n")
-    test_predict = train(test_set,train_set,train_lable)
+    test_predict = train(test_set, train_set, train_lable)
+    print("train：", test_predict, "\n")
 
     time3 = time.time()
     print("使用完毕，用时%s\n" % str(time3 - time2) )

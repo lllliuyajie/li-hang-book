@@ -23,7 +23,7 @@ def get_hog_features(trainset):
     for img in trainset:
         img = np.reshape(img, (28, 28))
         cv_img = img.astype(np.uint8)
-        #hog_feature = hog.compute(cv_img)
+        # hog_feature = hog.compute(cv_img)     # hog: 方向梯度直方图
         features.append(cv_img)
 
     features = np.array(features)
@@ -45,7 +45,7 @@ def train(trainset, train_lable):
 
     while True:
         nochange_count += 1
-        if nochange_count >nochange_up_limit:
+        if nochange_count > nochange_up_limit:
             break
         index = random.randint(0, train_size-1)  # randint(a, b) 随机生成a和b之间的数
         img = trainset[index]
@@ -56,7 +56,7 @@ def train(trainset, train_lable):
         yi = int(lable != object_num) *2 -1   # int(true) = 0  若标签和识别的数字不一样 int（true） = 0
         result = yi * (np.dot(img, w)+b)
 
-        # 如果 result < 0 ,则进行更新迭代w， b
+        # 如果 result <= 0 ,则进行更新迭代w， b
 
         if result <= 0 :
 
@@ -74,7 +74,7 @@ def train(trainset, train_lable):
 
 
 def predict(test_set, w, b):
-    predicts =[ ]
+    predicts = [ ]
     for img in test_set:
         result = np.dot(img, w)+b
         result = result >0

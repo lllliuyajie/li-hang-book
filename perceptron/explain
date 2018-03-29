@@ -1,4 +1,4 @@
-numpy : numpy 的shape，reshape，zeros， dot。  列表结构
+numpy : numpy 的shape，reshape，zeros， dot(矩阵乘法)。  列表结构
 
 切片: [:,:]  所有的行列向量，[0:,1:] 从第一行开始读取，从第二列开始读取， [:,0] 只读取第一列
 time : time.time()当前时间戳  ，time.scrfptime()接收元组，表示字符串（format）
